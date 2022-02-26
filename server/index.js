@@ -9,6 +9,14 @@ const multer = require("multer");
 const app = express();
 const port = 3001;
 
+//Secret database stuff
+const db = mysql.createPool({
+  host: config.DB_HOST,
+  user: config.DB_USER,
+  password: config.DB_PASSWORD,
+  database: config.DB_NAME,
+});
+
 //setup middleware
 app.use(cors());
 app.use(express.json());
@@ -38,7 +46,7 @@ app.get("/", (req, res) => {
   res.send("Secret api stuff.");
 });
 
-//post method
+//post images method
 app.post(
   "/image",
   imageUpload.single("image"),
@@ -50,6 +58,22 @@ app.post(
     res.status(400).send({ error: error.message });
   }
 );
+
+//post number of spaces - if computation done on esp
+app.post("/sendspaces", (req, res) => {
+  //grab values from request
+  const cameraid = req.body.cameraid;
+  const freespaces = req.body.freespaces;
+  console.log("Request to insert: " + freespaces + " at " + cameraid);
+  //form the query
+  const sqlInsert =
+    "INSERT INTO parkingTable (cameraid, freespaces) VALUES (?, ?);";
+  //execute query
+  db.query(sqlInsert, [cameraid, freespaces], (err, result) => {
+    console.log(result + ":" + err);
+  });
+  res.send("Success");
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
