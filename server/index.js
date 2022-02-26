@@ -44,10 +44,7 @@ app.post(
   imageUpload.single("image"),
   (req, res) => {
     console.log(JSON.stringify(req.file));
-    let response = '<a href="/">Home</a><br>';
-    response += "Files uploaded successfully.<br>";
-    response += `<img src="${req.file.path}" /><br>`;
-    return res.send(response);
+    res.send("Files uploaded successfully");
   },
   (error, req, res, next) => {
     res.status(400).send({ error: error.message });
