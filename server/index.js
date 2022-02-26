@@ -4,6 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
+const mysql = require("mysql");
+const config = require("./config.js");
 
 //define constants
 const app = express();
