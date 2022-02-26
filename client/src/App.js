@@ -41,7 +41,7 @@ function App() {
     );
   });
   return (
-    <div>
+    <div className="App">
       <h1>Hackathon February {year} Countdown</h1>
       {timerComponents.length ? timerComponents : <span>Time's up!</span>}
     </div>
