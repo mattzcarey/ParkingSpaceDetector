@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import  MapContainer  from "./Components/Map";
+import Button from "@mui/material/Button";
+
+let tCount = 0;
 
 function App() {
   const calculateTimeLeft = () => {
@@ -17,6 +21,10 @@ function App() {
 
     return timeLeft;
   };
+
+ function TeaCount() {
+   tCount +=1;
+ }
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [year] = useState(new Date().getFullYear());
@@ -44,6 +52,14 @@ function App() {
     <div className="App">
       <h1>Hackathon February {year} Countdown</h1>
       {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      <div className="tea-count">
+        {" "}
+        <Button variant="outlined" onClick={TeaCount}>
+          Tea Counter
+        </Button>
+        <h2>{tCount}</h2>
+      </div>
+        <MapContainer />
     </div>
   );
 }
