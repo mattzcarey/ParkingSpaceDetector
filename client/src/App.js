@@ -3,7 +3,6 @@ import "./App.css";
 
 function App() {
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
     const difference = +new Date(`2022-02-27T11:45:00`) - +new Date();
     let timeLeft = {};
 
