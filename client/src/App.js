@@ -61,7 +61,9 @@ function App() {
         </Button>
         <h2>{tCount}</h2>
       </div>
-      <MapContainer />
+      <div className="container">
+        <MapContainer />
+      </div>
     </div>
   );
 }
