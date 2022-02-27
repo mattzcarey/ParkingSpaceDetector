@@ -27,8 +27,6 @@ function App() {
  }
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [year] = useState(new Date().getFullYear());
-  
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,10 +49,13 @@ function App() {
   });
   return (
     <div className="App">
-      <h1>Hackathon February {year} Countdown</h1>
+      <h1>Boeing x CSS Hackathon Countdown</h1>
       {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      <h4>Join our Spotify Session</h4>
+      <div>
+        <img src="spotify-session-qr.png" alt="Spotify QR code" className="photoqr" />
+      </div>
       <div className="tea-count">
-        {" "}
         <Button variant="outlined" onClick={TeaCount}>
           Tea Counter
         </Button>
