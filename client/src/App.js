@@ -28,6 +28,7 @@ function App() {
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [year] = useState(new Date().getFullYear());
+  
 
   useEffect(() => {
     setTimeout(() => {
@@ -59,7 +60,9 @@ function App() {
         </Button>
         <h2>{tCount}</h2>
       </div>
+      <div className="container">
         <MapContainer />
+      </div>
     </div>
   );
 }
